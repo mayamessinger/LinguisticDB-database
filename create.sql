@@ -1,5 +1,5 @@
 -- TO CREATE/POPULATE DATABASE, GO TO ROOT PROJECT FOLDER
--- dropdb ling; createdb ling; psql ling -af create.sql
+-- dropdb ldb; createdb ldb; psql ldb -af create.sql
 -- psql ling -af load.sql
 
 CREATE TABLE Authors
@@ -58,7 +58,7 @@ CREATE TABLE UserReview
 book_id INTEGER NOT NULL REFERENCES Books(uid),
 review VARCHAR(256) NOT NULL,
  timestamp INTEGER NOT NULL,
-PRIMARY KEY(username, book_id)););
+PRIMARY KEY(username, book_id));
 	     
  CREATE TABLE CosineSimilarity
  (uid1 INTEGER NOT NULL REFERENCES Books(uid),
