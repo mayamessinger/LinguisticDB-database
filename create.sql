@@ -15,7 +15,7 @@ CREATE TABLE Books
  CREATE TABLE Writes
  (uid INTEGER NOT NULL REFERENCES Books(uid) PRIMARY KEY,
   name VARCHAR(256) NOT NULL REFERENCES Authors(name));
-						
+
 CREATE TABLE BookWordAggregates
 (uid INTEGER NOT NULL REFERENCES Books(uid) PRIMARY KEY,
  per_sentence REAL NOT NULL,
@@ -39,13 +39,13 @@ CREATE TABLE Sequences
  times_appear REAL NOT NULL,
  PRIMARY KEY(uid, word, next_word));
 
-CREATE TABLE User
+CREATE TABLE Users
 (username VARCHAR(256) NOT NULL PRIMARY KEY,
 email VARCHAR(256) NOT NULL,
-password VARCHAR(64) NOT NULL);
+password VARCHAR(256) NOT NULL);
 
 CREATE TABLE UserRatings
-(username VARCHAR(256) NOT NULL REFERENCES User(username),
+(username VARCHAR(256) NOT NULL REFERENCES Users(username),
  book_id INTEGER NOT NULL REFERENCES Books(uid),
 rating INTEGER NOT NULL, -- CHECK(rating > 0) AND (rating < 11),
 timestamp INTEGER NOT NULL,

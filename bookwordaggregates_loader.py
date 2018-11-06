@@ -11,7 +11,7 @@ def numWords(file):
 	return len(file.split())
 
 def numSentences(file):
-	return len(file.split('.'))
+	return len(file.split('[.!?]'))
 
 def wps(file):
 	return numWords(file)/numSentences(file)
