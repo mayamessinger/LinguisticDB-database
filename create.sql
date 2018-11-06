@@ -20,7 +20,7 @@ CREATE TABLE BookWordAggregates
 (uid INTEGER NOT NULL REFERENCES Books(uid) PRIMARY KEY,
  per_sentence REAL NOT NULL,
  total_count REAL NOT NULL,
- avg-word-length REAL NOT NULL);
+ avg_word_length REAL NOT NULL);
 
 CREATE TABLE CommonWords
 (uid INTEGER NOT NULL REFERENCES Books(uid),
