@@ -8,7 +8,7 @@ CREATE TABLE Authors
 
 CREATE TABLE Books
 (uid INTEGER NOT NULL PRIMARY KEY,
- title VARCHAR(256) NOT NULL,
+ title VARCHAR(512) NOT NULL,
  date_published VARCHAR(256) NOT NULL,
  link_to_book VARCHAR(256) NOT NULL);
 					      					       
@@ -70,3 +70,5 @@ PRIMARY KEY(username, book_id));
   LDA_score REAL NOT NULL,
   cos_similarity REAL NOT NULL,
   PRIMARY KEY(author1, author2));
+
+CREATE INDEX BookTitles ON Books(title);
