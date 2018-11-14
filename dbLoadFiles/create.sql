@@ -25,8 +25,7 @@ CREATE TABLE BookWordAggregates
 CREATE TABLE CommonWords
 (uid INTEGER NOT NULL REFERENCES Books(uid),
  word VARCHAR(256) NOT NULL,
- frequency REAL NOT NULL,
- wordcount INTEGER NOT NULL,
+ frequency INTEGER NOT NULL,
  PRIMARY KEY(uid, word));
 	     
 CREATE TABLE Downloads
@@ -35,8 +34,8 @@ CREATE TABLE Downloads
 
 CREATE TABLE Sequences
 (uid INTEGER NOT NULL REFERENCES Books(uid),
- word VARCHAR(256) NOT NULL,
- next_word VARCHAR(256) NOT NULL,
+ word VARCHAR(256) NOT NULL REFERENCES CommonWords(word),
+ next_word VARCHAR(256) NOT NULL REFERENCES CommonWords(word),
  times_appear REAL NOT NULL,
  PRIMARY KEY(uid, word, next_word));
 
@@ -53,10 +52,10 @@ timestamp INTEGER NOT NULL,
 PRIMARY KEY(username, book_id));
 	     
 CREATE TABLE UserReview
-(username VARCHAR(256) NOT NULL ,
+(username VARCHAR(256) NOT NULL REFERENCES Users(username),
 book_id INTEGER NOT NULL REFERENCES Books(uid),
 review VARCHAR(256) NOT NULL,
- timestamp INTEGER NOT NULL,
+timestamp INTEGER NOT NULL,
 PRIMARY KEY(username, book_id));
 	     
  CREATE TABLE CosineSimilarity
@@ -73,3 +72,6 @@ PRIMARY KEY(username, book_id));
   PRIMARY KEY(author1, author2));
 
 CREATE INDEX BookTitles ON Books(title);
+CREATE INDEX AuthorsNameIndex ON Authors(name);
+CREATE INDEX CommonWordsIndex ON CommonWords(word);
+CREATE INDEX SequencesIndex ON Sequences(word);
