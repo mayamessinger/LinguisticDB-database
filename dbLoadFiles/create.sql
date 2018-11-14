@@ -26,6 +26,7 @@ CREATE TABLE CommonWords
 (uid INTEGER NOT NULL REFERENCES Books(uid),
  word VARCHAR(256) NOT NULL,
  frequency REAL NOT NULL,
+ wordcount INTEGER NOT NULL,
  PRIMARY KEY(uid, word));
 	     
 CREATE TABLE Downloads
