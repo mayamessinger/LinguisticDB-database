@@ -1,5 +1,5 @@
 COPY Authors
-FROM '/home/repo/authors.csv'
+FROM '/home/database/dbLoadFiles/authors.csv'
 WITH
 (
     DELIMITER '|',  --CSV field delimiter
@@ -7,7 +7,7 @@ WITH
 );
 
 COPY Books
-FROM '/home/repo/books.csv'
+FROM '/home/database/dbLoadFiles/books.csv'
 WITH
 (
 	DELIMITER '|',
@@ -15,7 +15,7 @@ WITH
 );
 
 COPY Writes
-FROM '/home/repo/writes.csv'
+FROM '/home/database/dbLoadFiles/writes.csv'
 WITH
 (
 	DELIMITER '|',
@@ -23,7 +23,7 @@ WITH
 );
 
 COPY BookWordAggregates
-FROM '/home/repo/bookword.csv'
+FROM '/home/database/dbLoadFiles/bookword.csv'
 WITH
 (
 		DELIMITER '|',

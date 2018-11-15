@@ -10,7 +10,7 @@ def getBook(file):
 
 def getTitle(file):
 	file = file.split("/")[3].split(".")[0]
-	tree = ET.parse("/home/repo/cache/epub/" + file + "/pg" + file + ".rdf")
+	tree = ET.parse("/home/database/cache/epub/" + file + "/pg" + file + ".rdf")
 	namespaces = {"dcterms": "http://purl.org/dc/terms/",
 					"pgterms": "http://www.gutenberg.org/2009/pgterms/",
 					"rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"}
@@ -19,7 +19,7 @@ def getTitle(file):
 
 def getPublished(file):
 	file = file.split("/")[3].split(".")[0]
-	tree = ET.parse("/home/repo/cache/epub/" + file + "/pg" + file + ".rdf")
+	tree = ET.parse("/home/database/cache/epub/" + file + "/pg" + file + ".rdf")
 	namespaces = {"dcterms": "http://purl.org/dc/terms/",
 					"pgterms": "http://www.gutenberg.org/2009/pgterms/",
 					"rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"}
@@ -28,13 +28,13 @@ def getPublished(file):
 
 def getLink(file):
 	file = file.split("/")[3].split(".")[0]
-	return "http://www.gutenberg.org/files/" + file + "/" + file + ".txt"
+	return "http://www.gutenberg.org/ebooks/" + file
 
 def populate():
 	headerSize = 1305
 
-	# for file in glob.glob("/home/books/[0-9]*.txt"):
-	for file in glob.glob("/home/books/4*.txt"):
+	for file in glob.glob("/home/books/[0-9]*.txt"):
+	# for file in glob.glob("/home/books/4*.txt"):
 		curr = getBook(file)
 		print "%s|%s|%s|%s" %(file.split("/")[3].split(".")[0], getTitle(file), \
 		getPublished(file), getLink(file))
