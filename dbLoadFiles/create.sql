@@ -1,6 +1,6 @@
 -- TO CREATE/POPULATE DATABASE, GO TO ROOT PROJECT FOLDER
 -- dropdb ldb; createdb ldb; psql ldb -af create.sql
--- psql ling -af load.sql
+-- psql ldb -af load.sql
 
 CREATE TABLE Authors
 (name VARCHAR(256) NOT NULL PRIMARY KEY,
@@ -34,8 +34,8 @@ CREATE TABLE Downloads
 
 CREATE TABLE Sequences
 (uid INTEGER NOT NULL REFERENCES Books(uid),
- word VARCHAR(256) NOT NULL REFERENCES CommonWords(word),
- next_word VARCHAR(256) NOT NULL REFERENCES CommonWords(word),
+ word VARCHAR(256) NOT NULL,
+ next_word VARCHAR(256) NOT NULL,
  times_appear REAL NOT NULL,
  PRIMARY KEY(uid, word, next_word));
 
