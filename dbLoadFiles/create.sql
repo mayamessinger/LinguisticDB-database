@@ -72,6 +72,11 @@ PRIMARY KEY(username, book_id));
   PRIMARY KEY(author1, author2));
 
 CREATE INDEX BookTitles ON Books(title);
-CREATE INDEX AuthorsNameIndex ON Authors(name);
+CREATE INDEX AuthorWrites ON Writes(name);
+CREATE INDEX Aggregates1 ON BookWordAggregates(per_sentence);
+CREATE INDEX Aggregates2 ON BookWordAggregates(total_count);
+CREATE INDEX Aggregates3 ON BookWordAggregates(avg_word_length);
 CREATE INDEX CommonWordsIndex ON CommonWords(word);
 CREATE INDEX SequencesIndex ON Sequences(word);
+CREATE INDEX Cos1 ON CosineSimilarity(uid1);
+CREATE INDEX Author1 ON AuthorSimilarity(author1);
