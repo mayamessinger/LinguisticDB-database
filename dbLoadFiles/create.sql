@@ -62,14 +62,15 @@ PRIMARY KEY(username, book_id));
  (uid1 INTEGER NOT NULL REFERENCES Books(uid),
   uid2 INTEGER NOT NULL REFERENCES Books(uid),
   cos_similarity REAL NOT NULL,
-  PRIMARY KEY(uid1, uid2));
+  rank INTEGER NOT NULL,
+  PRIMARY KEY(uid1, rank));
 
  CREATE TABLE AuthorSimilarity
  (author1 VARCHAR(256) NOT NULL REFERENCES Authors(name),
   author2 VARCHAR(256) NOT NULL REFERENCES Authors(name),
-  LDA_score REAL NOT NULL,
   cos_similarity REAL NOT NULL,
-  PRIMARY KEY(author1, author2));
+  rank INTEGER NOT NULL,
+  PRIMARY KEY(author1, rank));
 
 CREATE INDEX BookTitles ON Books(title);
 CREATE INDEX AuthorWrites ON Writes(name);
