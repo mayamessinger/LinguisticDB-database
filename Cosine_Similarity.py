@@ -55,8 +55,8 @@ for file in f_list:
     #get all words in text
     #stopTags = set(["CC","CD","DT","IN", "LS", "MD", "PDT", "POS", "PRP$", "TO","EX","UH"])
     #SHOULD GET RID OF STOPWORDS.NLTK FOR OVERALL STATS
-    #stopWords = set(nltk.corpus.stopwords.words("english")).union(set(["-","’","‘", "_",";","(",")","<",">",",","''","``","”",'“',".","?",":","%",", "," ","n","=",",  ","#","$","@","{","}","[","]"]))
-    stopWords = set("bcdefghjklmnopqrstuvwxyzBCDEFGHJKLMNOPQRSTUVWXYZ").union(set(["'s","-","’","‘", "_",";","(",")","<",">",",","''","``","”",'“',".","?",":","%",", "," ","n","=",",  ","#","$","@","{","}","[","]"]))
+    #stopWords = set(nltk.corpus.stopwords.words("english"))
+    stopWords = set("bcdefghjklmnopqrstuvwxyzBCDEFGHJKLMNOPQRSTUVWXYZ").union(set(["'s","*","-","’","‘", "_",";","(",")","<",">",",","''","``","”",'“',".","?",":","%",", "," ","n","=",",  ","#","$","@","{","}","[","]"]))
     for line in book:
         line = line.split(" ")
         tokens = []
@@ -75,7 +75,7 @@ for file in f_list:
         for word in refined:
             if(word not in dictWords):
                 dictWords[word] = [1,0] #first is tf, second is tf*idf
-                if(word not in dictDF):
+                if(word not in dictDF): #normalize all the counts
                     dictDF[word] = 1
                 else:
                     dictDF[word] += 1
@@ -114,9 +114,9 @@ for book1 in books:
         dictSimilarities[book2][book1] = sim
     ind+=1
 print(time.time()-start)
-# for book in books:
-#     for book1 in books:
-#         print(book+" | "+str(books[book]["title"])+" "+book1 + " | "+str(books[book1]["title"])+" "+str(dictSimilarities[book][book1]))
+for book in books:
+    for book1 in books:
+        print(book+" | "+str(books[book]["title"])+" "+book1 + " | "+str(books[book1]["title"])+" "+str(dictSimilarities[book][book1]))
 
 #Common Words
 from operator import itemgetter
@@ -125,6 +125,7 @@ for book in books:
     lst = sorted(words,key=lambda elem: elem[1][1], reverse=True)
     words = list(books[book]["word_freq"].items())
     lst1 = sorted(words,key=lambda elem: elem[1][0], reverse=True)
+    print(books[book]["title"])
     print("highest tfidf: %s"%lst[0:10])
     print("highest frequencies: %s"%lst1[0:10])
 # def initial_process_files(directory):
