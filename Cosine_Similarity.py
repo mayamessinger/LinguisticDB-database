@@ -23,6 +23,7 @@ dictDF = {}
 books = {}
 start = time.time()
 dictTokens = {}
+dictAuth = {}
 for file in f_list:
     #create text's dictionaries
     dictWords = {} #words to occurences
@@ -83,6 +84,12 @@ for file in f_list:
             else:
                 dictWords[word][0] +=1
     books[file]["word_freq"] = dictWords
+    #build author data
+    if(author not in dictAuth):
+        dictAuth[author] = {}
+        dictAuth[author]["books"] = []
+        dictAuth[author]["sim_vect"] = {}
+    dictAuth[author]["books"]+=[file]
 #put dictWords into a library by title
 #create IDF
 dictIDF = {}
@@ -117,9 +124,45 @@ for book1 in books:
         bookTopSim += [sim_list[i]+[i+1]]
         i+=1
     ind+=1
+#author similarity calculation
+for author in dictAuth:
+    #incorporate each book into the author's vector
+    for book in dictAuth[author]["books"]:
+        book_vector = books[book]["word_freq"]
+        for word in book_vector:
+            if(word not in dictAuth[author]["sim_vect"]):
+                dictAuth[author]["sim_vect"][word] = book_vector[word]
+            else:
+                dictAuth[author]["sim_vect"][word][0] += book_vector[word][0]
+                dictAuth[author]["sim_vect"][word][1] += book_vector[word][1]
+for author in dictAuth:
+    vec = dictAuth[author]["sim_vect"]
+    dictAuth[author]["magnitude"] = math.sqrt(dot(vec,vec))
+#show top most similar authors
+authTopSim = []
+ind = 0
+for auth1 in dictAuth :
+    auth1_v = dictAuth[auth1]["sim_vect"]
+    sim_list = []
+    for auth2 in dictAuth:
+        if(auth1==auth2):
+            continue
+        auth2_v  = dictAuth[auth2]["sim_vect"]
+        sim = dot(auth1_v,auth2_v)/(dictAuth[auth1]["magnitude"]*dictAuth[auth2]["magnitude"])
+        sim_list += [[auth1,auth2,sim]]
+    sim_list = sorted(sim_list, key = lambda elem: elem[2], reverse=True)
+    i=0
+    while i < 500 and i < len(sim_list):
+        authTopSim += [sim_list[i]+[i+1]]
+        i+=1
+    ind+=1
+
+
 
 print(time.time()-start)
-# print(bookTopSim[0:10])
+print(bookTopSim[0:10])
+print(authTopSim[0:10])
+
 
 #Common Words
 from operator import itemgetter
