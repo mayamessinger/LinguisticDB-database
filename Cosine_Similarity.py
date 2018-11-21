@@ -32,6 +32,7 @@ for file in f_list:
     #get rid of beginning header (for now! it has meaning in future!)
     begin = 0
     indic = True
+    file = file[:-4]
     books[file] = {}
     while (begin < len(text) and indic):
         line = text[begin]
@@ -96,27 +97,29 @@ for book in books.keys(): #book is such a strange word...2 O's...
     if(a == 0):
         print("magnitude is 0!!!")
         print(book)
-dictSimilarities = {}
+# dictSimilarities = {}
 #book_list = list(books.keys())
 #iter_books = book_list[0:(len(book_list)//2+1)]
+bookTopSim = []
 ind = 0
 for book1 in books:
     w_d1 = books[book1]["word_freq"]
-    iter = list(books.keys())[ind:]
-    for book2 in iter:
+    sim_list = []
+    for book2 in books:
+        if(book1==book2):
+            continue
         w_d2 = books[book2]["word_freq"]
         sim = dot(w_d1,w_d2)/(books[book1]["magnitude"]*books[book2]["magnitude"])
-        if(book1 not in dictSimilarities):
-            dictSimilarities[book1] = {}
-        dictSimilarities[book1][book2] = sim
-        if(book2 not in dictSimilarities):
-            dictSimilarities[book2] = {}
-        dictSimilarities[book2][book1] = sim
+        sim_list += [[book1,book2,sim]]
+    sim_list = sorted(sim_list, key = lambda elem: elem[2], reverse=True)
+    i=0
+    while i < 500 and i < len(sim_list):
+        bookTopSim += [sim_list[i]+[i+1]]
+        i+=1
     ind+=1
+
 print(time.time()-start)
-for book in books:
-    for book1 in books:
-        print(book+" | "+str(books[book]["title"])+" "+book1 + " | "+str(books[book1]["title"])+" "+str(dictSimilarities[book][book1]))
+# print(bookTopSim[0:10])
 
 #Common Words
 from operator import itemgetter
@@ -125,9 +128,9 @@ for book in books:
     lst = sorted(words,key=lambda elem: elem[1][1], reverse=True)
     words = list(books[book]["word_freq"].items())
     lst1 = sorted(words,key=lambda elem: elem[1][0], reverse=True)
-    print(books[book]["title"])
-    print("highest tfidf: %s"%lst[0:10])
-    print("highest frequencies: %s"%lst1[0:10])
+    # print(books[book]["title"])
+    # print("highest tfidf: %s"%lst[0:10])
+    # print("highest frequencies: %s"%lst1[0:10])
 # def initial_process_files(directory):
 #     for file in directory:
 #         create
