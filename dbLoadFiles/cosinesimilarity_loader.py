@@ -20,19 +20,18 @@ def getAuthor(file):
 		return "unknown"
 	else:
 		return tree.getroot().find("pgterms:ebook/dcterms:creator/pgterms:agent/pgterms:name", namespaces).text.encode("utf-8")
-
+def dot(dict1,dict2):
+    ret = 0
+    if(len(dict1)<=len(dict2)):
+        for key in dict1.keys():
+            if(key in dict2):
+                ret += dict1[key][1]*dict2[key][1]
+    else:
+        for key in dict2.keys():
+            if(key in dict1):
+                ret += dict1[key][1]*dict2[key][1]
+    return ret
 def populate():
-	def dot(dict1,dict2):
-        ret = 0
-        if(len(dict1)<=len(dict2)):
-            for key in dict1.keys():
-                if(key in dict2):
-                    ret += dict1[key][1]*dict2[key][1]
-        else:
-            for key in dict2.keys():
-                if(key in dict1):
-                    ret += dict1[key][1]*dict2[key][1]
-        return ret
     f_list = []
     for file in glob.glob("/home/books/[0-9]*.txt"):
         f_list+=[file]
