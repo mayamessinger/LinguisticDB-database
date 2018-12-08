@@ -33,7 +33,7 @@ def dot(dict1,dict2):
     return ret
 def populate():
     f_list = []
-    for file in glob.glob("/home/books/[0-9]*.txt")[0:5]:
+    for file in glob.glob("/home/books/[0-9]*.txt"):
         f_list+=[file]
     #orig_f_list = f_list.copy()
     dictDF = {}
