@@ -72,7 +72,7 @@ def populate():
         #stopTags = set(["CC","CD","DT","IN", "LS", "MD", "PDT", "POS", "PRP$", "TO","EX","UH"])
         #SHOULD GET RID OF STOPWORDS.NLTK FOR OVERALL STATS
         #stopWords = set(nltk.corpus.stopwords.words("english"))
-        stopWords = set("bcdefghjklmnopqrstuvwxyzBCDEFGHJKLMNOPQRSTUVWXYZ").union(set(["'s","*","-","’","‘", "_",";","(",")","<",">",",","''","``","”",'“',".","?",":","%",", "," ","n","=",",  ","#","$","@","{","}","[","]"]))
+        stopWords = set("bcdefghjklmnopqrstuvwxyzBCDEFGHJKLMNOPQRSTUVWXYZ").union(set(["'s","*","-","_",";","(",")","<",">",",","''","``",".","?",":","%",", "," ","=",",  ","#","$","@","{","}","[","]"]))
         for line in book:
             line = line.split(" ")
             tokens = []
