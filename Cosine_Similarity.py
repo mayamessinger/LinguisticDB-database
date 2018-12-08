@@ -33,7 +33,8 @@ for file in f_list:
     #get rid of beginning header (for now! it has meaning in future!)
     begin = 0
     indic = True
-    file = file[:-4]
+
+    file = file[:-6] #uid for the book
     books[file] = {}
     while (begin < len(text) and indic):
         line = text[begin]
