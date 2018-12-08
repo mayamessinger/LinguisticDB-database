@@ -3,7 +3,6 @@ import re
 import glob
 import xml.etree.ElementTree as ET
 import nltk
-nltk.download('punkt')
 import math
 import time
 import os
@@ -41,12 +40,13 @@ def populate():
     books = {}
     start = time.time()
     dictTokens = {}
-    dictAuth = {}
+    dictAh = {}
     for file in f_list:
         #create text's dictionaries
         dictWords = {} #words to occurences
         #read in file
-        f = open(file, 'rt', encoding = "UTF-8")
+        #f = open(file, 'rt', encoding = "UTF-8")
+        f = open(file, 'rt')
         text = f.readlines() #list of all lines
         #get rid of beginning header (for now! it has meaning in future!)
         begin = 0
