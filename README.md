@@ -12,6 +12,7 @@ sudo su - postgres
 To use a python load file:
 File should print to std out once per table row
 for file in glob.glob("/home/books/[0-9]*.txt"):
+	bookid = file.split("/")[3].split(".")[0]
 	print "var1|var2" %(var1, var2)
 
 python -c 'import books_loader; books_loader.populate()' > books.csv
