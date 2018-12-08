@@ -47,7 +47,7 @@ def populate():
         #read in file
         #f = open(file, 'rt', encoding = "UTF-8")
         print(file)
-        f = open(file, 'rt')
+        f = open(file, 'rt', encoding = "ISO-8859-1")
         text = f.readlines() #list of all lines
         #get rid of beginning header (for now! it has meaning in future!)
         begin = 0
