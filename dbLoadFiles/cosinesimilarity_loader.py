@@ -99,12 +99,12 @@ def populate():
                 else:
                     dictWords[word][0] +=1
         books[file1]["word_freq"] = dictWords
-        #build author data
-        if(author not in dictAuth):
-            dictAuth[author] = {}
-            dictAuth[author]["books"] = []
-            dictAuth[author]["sim_vect"] = {}
-        dictAuth[author]["books"]+=[file1]
+        # #build author data
+        # if(author not in dictAuth):
+        #     dictAuth[author] = {}
+        #     dictAuth[author]["books"] = []
+        #     dictAuth[author]["sim_vect"] = {}
+        # dictAuth[author]["books"]+=[file1]
     #put dictWords into a library by title
     #create IDF
     dictIDF = {}
