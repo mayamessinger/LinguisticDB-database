@@ -46,7 +46,7 @@ def populate():
         dictWords = {} #words to occurences
         #read in file
         #f = open(file, 'rt', encoding = "UTF-8")
-        print(f)
+        print(file)
         f = open(file, 'rt')
         text = f.readlines() #list of all lines
         #get rid of beginning header (for now! it has meaning in future!)
