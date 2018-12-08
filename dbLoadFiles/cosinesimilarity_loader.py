@@ -134,4 +134,4 @@ def populate():
             i+=1
         ind+=1
     for tup in bookTopSim:
-		print("%s|%s|%f|%i" %(tup[0],tup[1],tup[2],tup[3]))
+        print("%s|%s|%f|%i"%(tup[0],tup[1],tup[2],tup[3]))
