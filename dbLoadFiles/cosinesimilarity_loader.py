@@ -3,6 +3,7 @@ import re
 import glob
 import xml.etree.ElementTree as ET
 import nltk
+nltk.download('punkt')
 import math
 import time
 import os
