@@ -50,7 +50,9 @@ def populate():
         #get rid of beginning header (for now! it has meaning in future!)
         begin = 0
         indic = True
-        file1 = file[:-4] #uid for the book
+        file1 = file.split("/")[3][:-4] #uid for the book
+        # file = file.split("/")[3].split(".")[0]
+
         books[file1] = {}
         while (begin < len(text) and indic):
             line = text[begin]
