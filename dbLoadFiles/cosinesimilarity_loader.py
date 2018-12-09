@@ -139,24 +139,28 @@ def populate():
 	f_list = []
 	k = len(glob.glob("/home/books/[0-9]*.txt"))
     for file in glob.glob("/home/books/[0-9]*.txt")[0:k//2]:
-        f_list+=[file]
+    	f_list+=[file]
 	addToCSV(f_list)
 	f_list = []
 	for file in glob.glob("/home/books/[0-9]*.txt")[k//2:]:
-        f_list+=[file]
+    	f_list+=[file]
 	addToCSV(f_list)
+	f_list = []
 	j = glob.glob("/home/books/[0-9]*.txt")[k//4:k//2]+glob.glob("/home/books/[0-9]*.txt")[k//2:3k//4]
 	for file in j:
         f_list+=[file]
 	addToCSV(f_list)
+	f_list = []
 	j = glob.glob("/home/books/[0-9]*.txt")[0:k//4]+glob.glob("/home/books/[0-9]*.txt")[k//2:3k//4]
 	for file in j:
         f_list+=[file]
 	addToCSV(f_list)
+	f_list = []
 	j = glob.glob("/home/books/[0-9]*.txt")[0:k//4]+glob.glob("/home/books/[0-9]*.txt")[3k//4:]
 	for file in j:
         f_list+=[file]
 	addToCSV(f_list)
+	f_list = []
 	j = glob.glob("/home/books/[0-9]*.txt")[k//4:k//2]+glob.glob("/home/books/[0-9]*.txt")[3k//4:]
 	for file in j:
         f_list+=[file]
