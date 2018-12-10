@@ -108,7 +108,8 @@ def populate():
         dictIDF = {}
         for word in dictDF:
             dictIDF[word] = math.log(len(books)/dictDF[word])+.000001
-        for book in books.keys(): #book is such a strange word...2 O's...
+        book_l = list(book.keys())
+        for book in book_l: #book is such a strange word...2 O's...
             word_dict = books[book]["word_freq"]
             for word in word_dict:
                 word_dict[word][1] = word_dict[word][0]*dictIDF[word]
