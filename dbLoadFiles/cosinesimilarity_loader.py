@@ -6,6 +6,7 @@ import nltk
 import math
 import time
 import os
+# import queue
 
 #  python -c 'import cosinesimilarity_loader; cosinesimilarity_loader.populate()'> cosinesimilarity.csv
 
@@ -124,11 +125,14 @@ def populate():
         for book1 in books:
             w_d1 = books[book1]["word_freq"]
             sim_list = []
+            # pq = queue.PriorityQueue(maxsize = 500)
             for book2 in books:
                 if(book1==book2):
                     continue
                 w_d2 = books[book2]["word_freq"]
                 sim = dot(w_d1,w_d2)/(books[book1]["magnitude"]*books[book2]["magnitude"])
+                # if(pq.full()):
+                #     pq.pop()
                 sim_list += [[book1,book2,sim]]
             sim_list = sorted(sim_list, key = lambda elem: elem[2], reverse=True) #use a PriorityQueue!!, run for only a few books at a time (1/6th?)
             i=0
@@ -138,12 +142,12 @@ def populate():
             ind+=1
         for tup in bookTopSim:
             print("%s|%s|%f|%i"%(tup[0],tup[1],tup[2],tup[3]))
-    f_list = []
     # done = set() #next optimization
     k = len(glob.glob("/home/books/[0-9]*.txt"))
-    for y in range(72):
-        j = math.ceil(k*(y/72 + 1/72))
-        i = (k*y)//72
+    for y in range(100):
+        f_list = []
+        j = math.ceil(k*(y/100 + 1/100))
+        i = (k*y)//100
         if(i=)
         for file in glob.glob("/home/books/[0-9]*.txt")[i:j]:
     # for file in glob.glob("/home/books/[0-9]*.txt"):
