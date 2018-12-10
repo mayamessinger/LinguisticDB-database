@@ -128,7 +128,7 @@ def populate():
 	            w_d2 = books[book2]["word_freq"]
 	            sim = dot(w_d1,w_d2)/(books[book1]["magnitude"]*books[book2]["magnitude"])
 	            sim_list += [[book1,book2,sim]]
-	        sim_list = sorted(sim_list, key = lambda elem: elem[2], reverse=True)
+	        sim_list = sorted(sim_list, key = lambda elem: elem[2], reverse=True) #use a PriorityQueue!!, run for only a few books at a time (1/6th?)
 	        i=0
 	        while i < 500 and i < len(sim_list):
 	            bookTopSim += [sim_list[i]+[i+1]]
@@ -139,8 +139,8 @@ def populate():
 	f_list = []
 	# done = set() #next optimization
 	k = len(glob.glob("/home/books/[0-9]*.txt"))
-	# for file in glob.glob("/home/books/[0-9]*.txt")[0:k//2]:
-	for file in glob.glob("/home/books/[0-9]*.txt"):
+	for file in glob.glob("/home/books/[0-9]*.txt")[0:k//20]:
+	# for file in glob.glob("/home/books/[0-9]*.txt"):
 		f_list+=[file]
 	addToCSV(f_list)
 	# f_list = []
