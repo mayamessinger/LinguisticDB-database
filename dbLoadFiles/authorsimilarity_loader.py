@@ -160,6 +160,7 @@ def populate():
             for tup in authTopSim:
                 print("%s|%s|%f|%i"%(tup[0],tup[1],tup[2],tup[3]))
     # done = set() #next optimization
+    f_list = []
     for file in glob.glob("/home/books/[0-9]*.txt"):
     # for file in glob.glob("/home/books/[0-9]*.txt"):
         f_list+=[file]
