@@ -136,7 +136,7 @@ def populate():
         authTopSim = []
         ind = 0
         auth_l = dictAuth.keys()
-        k = len(auth_l))
+        k = len(auth_l)
         for y in range(80):
             f_list = []
             j = math.ceil(k*(y/80 + 1/80))
