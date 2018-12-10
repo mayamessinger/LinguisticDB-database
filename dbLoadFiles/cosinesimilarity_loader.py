@@ -17,9 +17,9 @@ def getAuthor(file):
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"}
 
     if (tree.getroot().find("pgterms:ebook/dcterms:creator/pgterms:agent/pgterms:name", namespaces) is None):
-    return "unknown"
+        return "unknown"
     else:
-    return tree.getroot().find("pgterms:ebook/dcterms:creator/pgterms:agent/pgterms:name", namespaces).text.encode("utf-8")
+        return tree.getroot().find("pgterms:ebook/dcterms:creator/pgterms:agent/pgterms:name", namespaces).text.encode("utf-8")
 def dot(dict1,dict2):
     ret = 0
     if(len(dict1)<=len(dict2)):
