@@ -114,7 +114,8 @@ def populate():
 	            word_dict[word][1] = word_dict[word][0]*dictIDF[word]
 	        a = math.sqrt(dot(word_dict,word_dict))
 	        books[book]["magnitude"] = a
-			if(a == 0): books.pop(book)
+			if(a == 0):
+				books.pop(book)
 			#     print("magnitude is 0!!!")
 	        #     print(book)
 		bookTopSim = []
