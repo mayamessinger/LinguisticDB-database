@@ -148,7 +148,6 @@ def populate():
         f_list = []
         j = math.ceil(k*(y/100 + 1/100))
         i = (k*y)//100
-        if(i=)
         for file in glob.glob("/home/books/[0-9]*.txt")[i:j]:
     # for file in glob.glob("/home/books/[0-9]*.txt"):
             f_list+=[file]
