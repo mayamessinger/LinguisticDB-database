@@ -48,14 +48,14 @@ CREATE TABLE UserRatings
 (username VARCHAR(256) NOT NULL REFERENCES Users(username),
  book_id INTEGER NOT NULL REFERENCES Books(uid),
 rating INTEGER NOT NULL, -- CHECK(rating > 0) AND (rating < 11),
-timestamp INTEGER NOT NULL,
+timestamp TIMESTAMP NOT NULL,
 PRIMARY KEY(username, book_id));
 	     
 CREATE TABLE UserReview
 (username VARCHAR(256) NOT NULL REFERENCES Users(username),
 book_id INTEGER NOT NULL REFERENCES Books(uid),
 review VARCHAR(256) NOT NULL,
-timestamp INTEGER NOT NULL,
+timestamp TIMESTAMP NOT NULL,
 PRIMARY KEY(username, book_id));
 	     
  CREATE TABLE CosineSimilarity
