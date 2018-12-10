@@ -142,7 +142,8 @@ def populate():
     # done = set() #next optimization
     k = len(glob.glob("/home/books/[0-9]*.txt"))
     for y in range(20):
-        i = k*(y/20 + 1/20)
+        i = math.ceil(k*(y/20 + 1/20))
+        j = k*y//20
         if(i=)
         for file in glob.glob("/home/books/[0-9]*.txt")[y*k//20:i]:
     # for file in glob.glob("/home/books/[0-9]*.txt"):
