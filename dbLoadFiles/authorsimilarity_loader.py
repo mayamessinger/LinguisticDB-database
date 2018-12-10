@@ -40,7 +40,7 @@ def populate():
         start = time.time()
         dictTokens = {}
         dictAuth = {}
-        for file in f_list:
+        for file in f_lst:
             #create text's dictionaries
             dictWords = {} #words to occurences
             #read in file
