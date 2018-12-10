@@ -8,7 +8,7 @@ import time
 import os
 # import queue
 
-#  python -c 'import cosinesimilarity_loader; cosinesimilarity_loader.populate()'> cosinesimilarity.csv
+#  python -c 'import authorsimilarity_loader; authorsimilarity_loader.populate()'> authorsimilarity.csv
 
 def getAuthor(file):
     # file = file.split("/")[3].split(".")[0]
