@@ -47,7 +47,7 @@ password VARCHAR(256) NOT NULL);
 CREATE TABLE UserRatings
 (username VARCHAR(256) NOT NULL REFERENCES Users(username),
  book_id INTEGER NOT NULL REFERENCES Books(uid),
-rating INTEGER NOT NULL, -- CHECK(rating > 0) AND (rating < 11),
+rating INTEGER NOT NULL CHECK(rating > 0) AND (rating < 11),
 timestamp TIMESTAMP NOT NULL,
 PRIMARY KEY(username, book_id));
 
