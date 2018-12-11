@@ -31,7 +31,7 @@ def populate():
             #calc for auth1
             if(auth2 not in dictAuth[auth1]):
                 dictAuth[auth1][auth2] = [0,0]
-            x = dictAuth[auth1][auth2]
+            x = dictAuth[auth1][auth2][1]
             dictAuth[auth1][auth2][1] += 1
             dictAuth[auth1][auth2][0] = (sim + dictAuth[auth1][auth2][0]*x)/(x+1)
             #calc for auth2
