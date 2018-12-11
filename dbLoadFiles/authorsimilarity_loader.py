@@ -13,14 +13,14 @@ import csv
 def populate():
     dictAuth = {}
     dictBooks = {}
-    with open('writes.csv', 'rb') as csvfile:
+    with open('writes.csv') as csvfile:
         writesreader = csv.reader(csvfile, delimiter='|')
         for row in writesreader:
             if(row[0] not in dictBooks):
                 dictBooks[row[0]] = row[1] #stores author
             if(row[1] not in dictAuth):
                 dictAuth[row[1]] = {} #readies comparisons
-    with open('cosinesimilarity.csv', 'rb') as csvfile:
+    with open('cosinesimilarity.csv') as csvfile:
         writesreader = csv.reader(csvfile, delimiter='|')
         for row in writesreader:
             if(row[0]==row[1]):
