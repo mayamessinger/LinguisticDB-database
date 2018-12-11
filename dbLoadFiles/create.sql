@@ -33,8 +33,8 @@ CREATE TABLE Downloads
   download INTEGER NOT NULL);
 
 CREATE TABLE Sequences
-(uid INTEGER NOT NULL REFERENCES Books(uid),
- word VARCHAR(256) NOT NULL,
+(word VARCHAR(256) NOT NULL,
+ uid INTEGER NOT NULL REFERENCES Books(uid),
  next_word VARCHAR(256) NOT NULL,
  times_appear REAL NOT NULL,
  PRIMARY KEY(uid, word, next_word));
