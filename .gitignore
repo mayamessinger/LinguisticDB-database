@@ -3,4 +3,4 @@ cache/
 *.rdf
 dbLoadFiles/commonwords.csv
 dbLoadFiles/cosinesimilarity.csv
-
+dbLoadFiles/sequences.csv
