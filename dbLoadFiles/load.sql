@@ -38,8 +38,16 @@
 -- 		NULL 'NULL'
 -- );
 
-COPY AuthorSimilarity
-FROM '/home/database/dbLoadFiles/authorsimilarity.csv'
+--COPY AuthorSimilarity
+--FROM '/home/database/dbLoadFiles/authorsimilarity.csv'
+--WITH
+--(
+--		DELIMITER '|',
+--		NULL 'NULL'
+--);
+
+COPY Sequences
+FROM '/home/database/dbLoadFiles/sequencesplit/sequencesplit_xab.csv'
 WITH
 (
 		DELIMITER '|',

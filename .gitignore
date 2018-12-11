@@ -4,3 +4,4 @@ cache/
 dbLoadFiles/commonwords.csv
 dbLoadFiles/cosinesimilarity.csv
 dbLoadFiles/sequences.csv
+dbLoadFiles/sequencesplit/*
