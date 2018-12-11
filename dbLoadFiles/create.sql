@@ -11,7 +11,7 @@ CREATE TABLE Books
  title VARCHAR(512) NOT NULL,
  date_published VARCHAR(256) NOT NULL,
  link_to_book VARCHAR(256) NOT NULL);
-					      					       
+
  CREATE TABLE Writes
  (uid INTEGER NOT NULL REFERENCES Books(uid) PRIMARY KEY,
   name VARCHAR(256) NOT NULL REFERENCES Authors(name));
@@ -27,7 +27,7 @@ CREATE TABLE CommonWords
  word VARCHAR(256) NOT NULL,
  frequency INTEGER NOT NULL,
  PRIMARY KEY(uid, word));
-	     
+
 CREATE TABLE Downloads
 (uid INTEGER NOT NULL REFERENCES Books(uid) PRIMARY KEY,
   download INTEGER NOT NULL);
@@ -47,30 +47,30 @@ password VARCHAR(256) NOT NULL);
 CREATE TABLE UserRatings
 (username VARCHAR(256) NOT NULL REFERENCES Users(username),
  book_id INTEGER NOT NULL REFERENCES Books(uid),
-rating INTEGER NOT NULL, -- CHECK(rating > 0) AND (rating < 11),
-timestamp INTEGER NOT NULL,
+rating INTEGER NOT NULL CHECK(rating > 0) AND (rating < 11),
+timestamp TIMESTAMP NOT NULL,
 PRIMARY KEY(username, book_id));
-	     
+
 CREATE TABLE UserReview
 (username VARCHAR(256) NOT NULL REFERENCES Users(username),
 book_id INTEGER NOT NULL REFERENCES Books(uid),
 review VARCHAR(256) NOT NULL,
-timestamp INTEGER NOT NULL,
+timestamp TIMESTAMP NOT NULL,
 PRIMARY KEY(username, book_id));
-	     
+
  CREATE TABLE CosineSimilarity
  (uid1 INTEGER NOT NULL REFERENCES Books(uid),
   uid2 INTEGER NOT NULL REFERENCES Books(uid),
   cos_similarity REAL NOT NULL,
   rank INTEGER NOT NULL,
-  PRIMARY KEY(uid1, rank));
+  PRIMARY KEY(uid1, uid2));
 
  CREATE TABLE AuthorSimilarity
  (author1 VARCHAR(256) NOT NULL REFERENCES Authors(name),
   author2 VARCHAR(256) NOT NULL REFERENCES Authors(name),
   cos_similarity REAL NOT NULL,
   rank INTEGER NOT NULL,
-  PRIMARY KEY(author1, rank));
+  PRIMARY KEY(author1, author2));
 
 CREATE INDEX BookTitles ON Books(title);
 CREATE INDEX AuthorWrites ON Writes(name);
