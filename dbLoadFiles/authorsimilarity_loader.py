@@ -27,7 +27,7 @@ def populate():
                 continue
             auth1 = dictBooks[row[0]]
             auth2 = dictBooks[row[1]]
-            sim = row[2]
+            sim = float(row[2])
             #calc for auth1
             if(auth2 not in dictAuth[auth1]):
                 dictAuth[auth1][auth2] = [0,0]
