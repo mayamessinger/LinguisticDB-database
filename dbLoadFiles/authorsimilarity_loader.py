@@ -10,7 +10,7 @@ import os
 import csv
 #  python -c 'import authorsimilarity_loader; authorsimilarity_loader.populate()'> authorsimilarity.csv
 #AUTHORSIMILARITY WAS MODIFIED TO USE COSINESIMILARITY OF BOOKS!!!
-def populate()
+def populate():
     dictAuth = {}
     dictBooks = {}
     with open('writes.csv', 'rb') as csvfile:
