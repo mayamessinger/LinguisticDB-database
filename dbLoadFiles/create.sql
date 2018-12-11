@@ -81,3 +81,4 @@ CREATE INDEX CommonWordsIndex ON CommonWords(word);
 CREATE INDEX SequencesIndex ON Sequences(word);
 CREATE INDEX Cos1 ON CosineSimilarity(uid1);
 CREATE INDEX Author1 ON AuthorSimilarity(author1);
+--44663

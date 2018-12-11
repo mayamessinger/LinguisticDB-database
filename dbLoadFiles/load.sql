@@ -28,10 +28,18 @@ WITH
 (
 		DELIMITER '|',
 		NULL 'NULL'
-);*/
+);
 
 COPY CosineSimilarity
 FROM '/home/database/dbLoadFiles/cosinesimilarity.csv'
+WITH
+(
+		DELIMITER '|',
+		NULL 'NULL'
+);*/
+
+COPY AuthorSimilarity
+FROM '/home/database/dbLoadFiles/authorsimilarity.csv'
 WITH
 (
 		DELIMITER '|',
